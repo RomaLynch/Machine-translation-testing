@@ -51,7 +51,7 @@ except Exception as e:
 
 def load_polysemy_json(json_path: str) -> dict:
     if not os.path.exists(json_path):
-        raise FileNotFoundError(f"The polysemous word library file does not exist£º{json_path}")
+        raise FileNotFoundError(f"The polysemous word library file does not existï¼š{json_path}")
     with open(json_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
@@ -140,8 +140,8 @@ def calculate_batch_similarity(ch_word: str, sense_ch_list: List[str], word: str
 
         for idx_str in idx_strs:
             for item in word_cache.get(idx_str, []):
-                item_sense_clean = re.sub(r'[\s£¬¡£¡¢£»£º""''()£¨£©\n\r\t]', '', item["sense"].strip())
-                input_sense_clean = re.sub(r'[\s£¬¡£¡¢£»£º""''()£¨£©\n\r\t]', '', sense_clean)
+                item_sense_clean = re.sub(r'[\sï¼Œã€‚ã€ï¼›ï¼š""''()ï¼ˆï¼‰\n\r\t]', '', item["sense"].strip())
+                input_sense_clean = re.sub(r'[\sï¼Œã€‚ã€ï¼›ï¼š""''()ï¼ˆï¼‰\n\r\t]', '', sense_clean)
 
                 if item_sense_clean == input_sense_clean:
                     emb = item["embedding"]
@@ -246,8 +246,8 @@ def get_context_definition(
         for sense_ch in ch_senses:
             if not isinstance(sense_ch, str):
                 continue
-            sense_ch_clean = re.sub(r'[\s£¬¡£¡¢£»£º""''()£¨£©\n\r\t]', '', sense_ch.strip())
-            ch_word_clean = re.sub(r'[\s£¬¡£¡¢£»£º""''()£¨£©\n\r\t]', '', ch_word.strip())
+            sense_ch_clean = re.sub(r'[\sï¼Œã€‚ã€ï¼›ï¼š""''()ï¼ˆï¼‰\n\r\t]', '', sense_ch.strip())
+            ch_word_clean = re.sub(r'[\sï¼Œã€‚ã€ï¼›ï¼š""''()ï¼ˆï¼‰\n\r\t]', '', ch_word.strip())
 
             if sense_ch_clean == ch_word_clean:
               
@@ -398,10 +398,9 @@ def main():
                 writer.writerow(result_row)
                 processed_count += 1
 
-                # ½ø¶ÈÌáÊ¾
                 if (processed_count + skip_count + no_match_count) % 5000 == 0:
                     print(
-                        f"Processed  {processed_count + skip_count + no_match_count} rows£¨success£º{processed_count}£¬skip£º{skip_count}£¬unmatched£º{no_match_count}£©")
+                        f"Processed  {processed_count + skip_count + no_match_count} rowsï¼ˆsuccessï¼š{processed_count}ï¼Œskipï¼š{skip_count}ï¼Œunmatchedï¼š{no_match_count}ï¼‰")
 
             except Exception as e:
                 error_count += 1
@@ -413,7 +412,7 @@ def main():
                     if col not in result_row:
                         result_row[col] = ""
                 writer.writerow(result_row)
-                print(f"Processing error on line {row_idx}£º{str(e)[:100]}")
+                print(f"Processing error on line {row_idx}ï¼š{str(e)[:100]}")
 
     total_time = time.time() - total_start_time
     minutes = total_time / 60
@@ -422,7 +421,7 @@ def main():
     total_rows = processed_count + skip_count + no_match_count + error_count
 
     if total_rows > 0:
-        print(f"time£º{total_time / total_rows:.4f} s/row")
+        print(f"timeï¼š{total_time / total_rows:.4f} s/row")
 
 
 if __name__ == "__main__":
