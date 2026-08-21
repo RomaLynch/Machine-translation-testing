@@ -1,6 +1,6 @@
 import os
 
-# After execution, execute mut_maidu_trans.py
+# After execution, execute mut_baidu_trans.py
 def filter_long_sentences_and_count(input_txt, output_txt, max_chars=6000):
     if not os.path.exists(input_txt):
         print(f"Error: The input file {input_txt} does not exist")
@@ -49,11 +49,11 @@ def main():
         )
         total = kept + deleted
 
-        print(f"\n File£º{input_name}")
-        print(f"Original total sentence count£º{total}")
-        print(f"Number of deleted sentences£º{deleted}£¨characters>6000£©")
-        print(f"number of reserved sentences£º{kept}")
-        print(f"filtered file£º{output_path}")
+        print(f"\n FileÂ£Âº{input_name}")
+        print(f"Original total sentence countÂ£Âº{total}")
+        print(f"Number of deleted sentencesÂ£Âº{deleted}Â£Â¨characters>6000Â£Â©")
+        print(f"number of reserved sentencesÂ£Âº{kept}")
+        print(f"filtered fileÂ£Âº{output_path}")
 
     print("\n" + "=" * 60)
     print("=" * 60)
