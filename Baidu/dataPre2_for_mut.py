@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from typing import Optional
 import json
-
+# After execution, execute mutation.py
 SPACY_MODEL_PATH = 'en_core_web_sm'
 POLYSEMY_JSON_PATH = "/sense_dicts.json"
 INPUT_CSV_PATH = "mutation_csvFile/data4mut.csv"
@@ -13,14 +13,14 @@ OUTPUT_CSV_PATH = "mutation_csvFile/data4mut.csv"
 def init_spacy(model_path: str):
     try:
         nlp = spacy.load(model_path, disable=['parser', 'textcat', 'ner'])
-        print(f"SpaCy model loaded successfully£º{model_path}")
+        print(f"SpaCy model loaded successfullyÂ£Âº{model_path}")
         return nlp
     except Exception as e:
-        raise FileNotFoundError(f"SpaCy model loading failed£º{e}")
+        raise FileNotFoundError(f"SpaCy model loading failedÂ£Âº{e}")
 
 def load_polysemy_map(json_path: str) -> dict:
     if not os.path.exists(json_path):
-        raise FileNotFoundError(f"The polysemous word library file does not exist£º{json_path}")
+        raise FileNotFoundError(f"The polysemous word library file does not existÂ£Âº{json_path}")
     with open(json_path, 'r', encoding='utf-8') as f:
         polysemy_map = json.load(f)
     print(f"The polysemous word library has been successfully loaded, with a total of {len(polysemy_map)} words")
@@ -60,8 +60,8 @@ def process_csv(
         polysemy_map: dict
 ):
     if not os.path.exists(input_path):
-        raise FileNotFoundError(f"CSV input does not exist£º{input_path}")
-    print(f"Read input CSV£º{input_path}")
+        raise FileNotFoundError(f"CSV input does not existÂ£Âº{input_path}")
+    print(f"Read input CSVÂ£Âº{input_path}")
     try:
         df = pd.read_csv(input_path, encoding='utf-8')
     except UnicodeDecodeError:
