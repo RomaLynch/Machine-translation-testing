@@ -20,7 +20,7 @@ random.seed(42)
 np.random.seed(42)
 
 
-# After execution, execute gen_cutTXT4Trans
+# After execution, execute gen_mutTXT4Trans
 class Config:
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     SBERT_V2_LOCAL_PATH = "SBERT_chinese_v2"
