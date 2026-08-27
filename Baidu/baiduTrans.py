@@ -9,7 +9,7 @@ from hashlib import md5
 from pathlib import Path
 from tenacity import retry, stop_after_attempt, wait_fixed
 
-# After execution, execute clean_before_align.py
+# After execution, execute trans_res_cleaned.py
 appid = ''
 appkey = ''
 from_lang = 'en'
