@@ -12,7 +12,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 import threading
 
-# After execution, execute
+# After execution, execute clean_um_zh_src.py
 USAGE_LOCK = threading.Lock()
 
 USAGE_FILE = Path("cache/youdao_usage.json")
@@ -71,7 +71,7 @@ def translate_one_with_quota(text: str) -> str:
         now_hour = _get_current_hour()
 
         if now_hour != current_hour:
-            print(f"[Youdao] coming new calculate {now_hour}£¬reset")
+            print(f"[Youdao] coming new calculate {now_hour}Â£Â¬reset")
             current_hour = now_hour
             used_this_hour = 0
 
@@ -114,7 +114,7 @@ def translate_one_with_quota(text: str) -> str:
         return clean_text
 
 def translate_text_with_youdao_batch(texts: List[str], n_jobs: int = 16) -> List[str]:
-    print(f"A total of  {len(texts)} sentences£¬n_jobs={n_jobs}")
+    print(f"A total of  {len(texts)} sentencesÂ£Â¬n_jobs={n_jobs}")
     results = [None] * len(texts)
 
     with ThreadPoolExecutor(max_workers=n_jobs) as executor:
