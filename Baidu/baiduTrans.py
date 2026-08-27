@@ -9,6 +9,7 @@ from hashlib import md5
 from pathlib import Path
 from tenacity import retry, stop_after_attempt, wait_fixed
 
+# After execution, execute clean_before_align.py
 appid = ''
 appkey = ''
 from_lang = 'en'
@@ -65,11 +66,11 @@ def createRequest(query):
 
         if 'error_code' in result:
             error_msg = {
-                '52001': 'ÇëÇó³¬Ê±', '52002': 'ÏµÍ³´íÎó', '52003': 'Î´ÊÚÈ¨ÓÃ»§',
-                '54000': '±ØÌî²ÎÊıÎª¿Õ', '54001': 'Ç©Ãû´íÎó', '54003': '·ÃÎÊÆµÂÊÊÜÏŞ',
-                '54004': 'ÕË»§Óà¶î²»×ã', '54005': '³¤queryÇëÇóÆµ·±', '58000': '¿Í»§¶ËIP·Ç·¨',
-                '58001': 'ÒëÎÄÓïÑÔ·½Ïò²»Ö§³Ö', '58002': '·şÎñµ±Ç°ÒÑ¹Ø±Õ'
-            }.get(result['error_code'], f'´íÎóÂë{result["error_code"]}')
+                '52001': 'è¯·æ±‚è¶…æ—¶', '52002': 'ç³»ç»Ÿé”™è¯¯', '52003': 'æœªæˆæƒç”¨æˆ·',
+                '54000': 'å¿…å¡«å‚æ•°ä¸ºç©º', '54001': 'ç­¾åé”™è¯¯', '54003': 'è®¿é—®é¢‘ç‡å—é™',
+                '54004': 'è´¦æˆ·ä½™é¢ä¸è¶³', '54005': 'é•¿queryè¯·æ±‚é¢‘ç¹', '58000': 'å®¢æˆ·ç«¯IPéæ³•',
+                '58001': 'è¯‘æ–‡è¯­è¨€æ–¹å‘ä¸æ”¯æŒ', '58002': 'æœåŠ¡å½“å‰å·²å…³é—­'
+            }.get(result['error_code'], f'é”™è¯¯ç {result["error_code"]}')
             print(f"[Baidu API Error] {correr_msg} | Original text: {q [: 50]}")
             return q
 
@@ -84,7 +85,7 @@ def createRequest(query):
         return trans_text
 
     except Exception as e:
-        print(f"[trans errors] {str(e)} | details£º{q[:50]}...")
+        print(f"[trans errors] {str(e)} | detailsï¼š{q[:50]}...")
         return q
 
 
@@ -143,12 +144,12 @@ def main():
     total_time = end_time - start_time
     fail_num = sum(1 for cn, en in zip(cn_sentences, en_sentences) if cn == en or cn == "")
     success_num = total_sentences - fail_num
-    print(f"sentence count£º{total_sentences}")
-    print(f"trans succeed£º{success_num}")
-    print(f"trans failed£º{fail_num}")
-    print(f"total time£º{total_time:.2f} seconds")
-    print(f"ave.speed£º{total_sentences / total_time:.2f} lines/seconds")
-    print(f"succeed rate£º{success_num / total_sentences * 100:.2f}%")
+    print(f"sentence countï¼š{total_sentences}")
+    print(f"trans succeedï¼š{success_num}")
+    print(f"trans failedï¼š{fail_num}")
+    print(f"total timeï¼š{total_time:.2f} seconds")
+    print(f"ave.speedï¼š{total_sentences / total_time:.2f} lines/seconds")
+    print(f"succeed rateï¼š{success_num / total_sentences * 100:.2f}%")
 
 
 if __name__ == "__main__":
