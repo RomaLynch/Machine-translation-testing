@@ -1,4 +1,4 @@
-# Execute bugDetection.py after completion
+# Execute mut1bugDetection.py， mut2bugDetection.py， mut3bugDetection.py after completion
 import csv
 import os
 from pathlib import Path
